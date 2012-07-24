@@ -23,9 +23,9 @@ echo "$FINAL_FILE"
 #
 cat $SOURCE_FILE | tr -d "\'" > $TMP_FILE_1;				# Don't > Dont
 cat $TMP_FILE_1 | tr -s '[:upper:]' '[:lower:]' > $TMP_FILE_2;	# Word > word
-cat $TMP_FILE_2 | tr -s '[:space:]' "\n" > $TMP_FILE_1	;	# Word1 word2 > Word1
+cat $TMP_FILE_2 | tr -s '[:punct:]' "\ " > $TMP_FILE_1;		# First sentense. Second sentence. > First sentense Second sentence
+cat $TMP_FILE_1 | tr -s '[:space:]' "\n" > $TMP_FILE_2	;	# Word1 word2 > Word1
 									#		word2
-cat $TMP_FILE_1 | tr -s '[:punct:]' '[:space:]' > $TMP_FILE_2;		# First sentense. Second sentence. > First sentense Second sentence
 
 wc -l $TMP_FILE_2 >> $INFO_FILE;
 echo -n "newline in final tmp file";
